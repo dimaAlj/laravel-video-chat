@@ -47,18 +47,18 @@ export default {
       const peer = new Peer({
         initiator: false,
         trickle: false,
-        config: {
-          iceServers: [
-            {
-              urls: "stun:stun.stunprotocol.org",
-            },
-            {
-              urls: this.turn_url,
-              username: this.turn_username,
-              credential: this.turn_credential,
-            },
-          ],
-        },
+        // config: {
+        //   iceServers: [
+        //     {
+        //       urls: "stun:stun.stunprotocol.org",
+        //     },
+        //     {
+        //       urls: this.turn_url,
+        //       username: this.turn_username,
+        //       credential: this.turn_credential,
+        //     },
+        //   ],
+        // },
       });
 
       // Add Transceivers
@@ -146,4 +146,4 @@ export default {
 </script>
 
 <style scoped>
-</style>   
+</style>

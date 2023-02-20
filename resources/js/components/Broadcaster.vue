@@ -6,7 +6,7 @@
           Start Stream</button
         ><br />
         <p v-if="isVisibleLink" class="my-5">
-          Share the following streaming link: {{ streamLink }}
+         Share the following streaming link: {{ streamLink }}
         </p>
         <video autoplay ref="broadcaster"></video>
       </div>
@@ -77,18 +77,18 @@ export default {
             initiator: true,
             trickle: false,
             stream: stream,
-            config: {
-              iceServers: [
-                {
-                  urls: "stun:stun.stunprotocol.org",
-                },
-                {
-                  urls: this.turn_url,
-                  username: this.turn_username,
-                  credential: this.turn_credential,
-                },
-              ],
-            },
+            // config: {
+            //   iceServers: [
+            //     {
+            //       urls: "stun:stun.stunprotocol.org",
+            //     },
+            //     {
+            //       urls: this.turn_url,
+            //       username: this.turn_username,
+            //       credential: this.turn_credential,
+            //     },
+            //   ],
+            // },
           });
         },
 
@@ -96,6 +96,7 @@ export default {
 
         initEvents: () => {
           peer.on("signal", (data) => {
+            console.log("send offer over here.");
             // send offer over here.
             signalCallback(data, user);
           });
@@ -127,7 +128,6 @@ export default {
       this.streamingPresenceChannel = window.Echo.join(
         `streaming-channel.${this.streamId}`
       );
-
       this.streamingPresenceChannel.here((users) => {
         this.streamingUsers = users;
       });
